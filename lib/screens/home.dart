@@ -5,6 +5,8 @@ import 'package:flutter_todo_app/constants/colors.dart';
 import 'package:flutter_todo_app/models/todo.dart';
 import 'package:flutter_todo_app/widgets/todo_item.dart';
 
+import 'home_drawer.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -26,6 +28,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: HomeDrawer(),
       backgroundColor: tdBGColor,
       appBar: _buildAppBar(),
       body: Stack(
@@ -173,26 +176,22 @@ class _HomeState extends State<Home> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      elevation: 0,
-      backgroundColor: tdBGColor,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Icon(
-            Icons.menu,
-            color: tdBlack,
-            size: 30,
-          ),
-          SizedBox(
-            height: 40,
-            width: 40,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset("assets/images/avatar.jpg"),
+        iconTheme: IconThemeData(color: Colors.black, size: 25),
+        elevation: 0,
+        backgroundColor: tdBGColor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 7, top: 7),
+              height: 40,
+              width: 40,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset("assets/images/avatar.jpg"),
+              ),
             ),
-          )
-        ],
-      ),
-    );
+          ],
+        ));
   }
 }
